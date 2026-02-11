@@ -3,5 +3,5 @@ services:
     build: .
     container_name: plumise-web
     ports:
-      - "15440:3000"
+      - "15490:3000"
     restart: unless-stopped
