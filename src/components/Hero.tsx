@@ -1,18 +1,47 @@
-import { useRef, lazy, Suspense } from "react";
+import { useRef, lazy, Suspense, useState, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, BookOpen, Blocks, Bot, Zap } from "lucide-react";
 
 const NeuralNetwork = lazy(() => import("./three/NeuralNetwork"));
 
-const STATS = [
-  { icon: Blocks, label: "Block Height", value: "1,284,097" },
-  { icon: Bot, label: "Active Agents", value: "2,491" },
-  { icon: Zap, label: "TPS", value: "1,200" },
-];
-
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  const [blockHeight, setBlockHeight] = useState<string>("Loading...");
+
+  useEffect(() => {
+    const fetchBlockHeight = async () => {
+      try {
+        const response = await fetch("https://node-1.plumise.com/rpc", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            method: "eth_blockNumber",
+            params: [],
+            id: 1,
+          }),
+        });
+        const data = await response.json();
+        const blockNumber = parseInt(data.result, 16);
+        setBlockHeight(blockNumber.toLocaleString());
+      } catch (error) {
+        console.error("Failed to fetch block height:", error);
+        setBlockHeight("-");
+      }
+    };
+
+    fetchBlockHeight();
+    const interval = setInterval(fetchBlockHeight, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const STATS = [
+    { icon: Blocks, label: "Block Height", value: blockHeight },
+    { icon: Bot, label: "Active Agents", value: "0" },
+    { icon: Zap, label: "TPS", value: "-" },
+  ];
 
   return (
     <section
@@ -121,7 +150,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://docs.plumise.com"
+            href="/whitepaper.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold no-underline transition-all duration-200"
@@ -140,7 +169,7 @@ const Hero = () => {
             }}
           >
             <BookOpen size={16} />
-            Read Docs
+            White Paper
           </a>
         </motion.div>
 

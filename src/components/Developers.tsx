@@ -35,21 +35,21 @@ const resources: ResourceLink[] = [
     icon: Github,
     title: "GitHub",
     description: "Explore the source code and contribute",
-    url: "https://github.com/mikusnuz",
+    url: "https://github.com/plumise",
     tag: "Open Source",
   },
   {
     icon: BookOpen,
-    title: "Documentation",
-    description: "Guides, API references, and tutorials",
-    url: "https://docs.plumise.com",
-    tag: "Docs",
+    title: "White Paper",
+    description: "Technical overview and architecture",
+    url: "/whitepaper.pdf",
+    tag: "PDF",
   },
   {
     icon: Search,
     title: "Block Explorer",
     description: "Browse blocks, transactions, and agents",
-    url: "https://explorer.plumise.com",
+    url: "https://scan.plumise.com",
     tag: "Plumscan",
   },
   {
@@ -413,7 +413,7 @@ export const Developers = () => {
           className="text-center"
         >
           <a
-            href="https://docs.plumise.com"
+            href="/whitepaper.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2.5 rounded-2xl px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:gap-3.5"
