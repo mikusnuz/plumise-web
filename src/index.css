@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #06B6D4;
+    --color-primary-light: #22D3EE;
+    --color-accent: #8B5CF6;
+    --color-accent-light: #A78BFA;
+    --color-bg: #030712;
+    --color-bg-elevated: #0C1222;
+    --color-surface: #111827;
+    --color-surface-light: #1F2937;
+    --color-border: rgba(255, 255, 255, 0.06);
+    --color-border-hover: rgba(255, 255, 255, 0.12);
+    --color-text: #F1F5F9;
+    --color-text-muted: #94A3B8;
+    --color-glow-primary: rgba(6, 182, 212, 0.15);
+    --color-glow-accent: rgba(139, 92, 246, 0.12);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}
+
+@layer components {
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-surface-light);
+  }
+
+  .glass {
+    background: rgba(3, 7, 18, 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--color-border);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
