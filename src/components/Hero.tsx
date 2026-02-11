@@ -9,37 +9,45 @@ const Hero = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   const [blockHeight, setBlockHeight] = useState<string>("Loading...");
+  const [activeAgents, setActiveAgents] = useState<string>("Loading...");
 
   useEffect(() => {
-    const fetchBlockHeight = async () => {
+    const fetchStats = async () => {
       try {
-        const response = await fetch("https://node-1.plumise.com/rpc", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            jsonrpc: "2.0",
-            method: "eth_blockNumber",
-            params: [],
-            id: 1,
-          }),
-        });
+        const response = await fetch("https://dashboard.plumise.com/api/stats");
         const data = await response.json();
-        const blockNumber = parseInt(data.result, 16);
-        setBlockHeight(blockNumber.toLocaleString());
-      } catch (error) {
-        console.error("Failed to fetch block height:", error);
-        setBlockHeight("-");
+        setBlockHeight(Number(data.blockNumber).toLocaleString());
+        setActiveAgents(String(data.activeAgents));
+      } catch {
+        // Fallback to RPC for block height only
+        try {
+          const rpcRes = await fetch("https://node-1.plumise.com/rpc", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              jsonrpc: "2.0",
+              method: "eth_blockNumber",
+              params: [],
+              id: 1,
+            }),
+          });
+          const rpcData = await rpcRes.json();
+          setBlockHeight(parseInt(rpcData.result, 16).toLocaleString());
+        } catch {
+          setBlockHeight("-");
+        }
+        setActiveAgents("-");
       }
     };
 
-    fetchBlockHeight();
-    const interval = setInterval(fetchBlockHeight, 10000);
+    fetchStats();
+    const interval = setInterval(fetchStats, 10000);
     return () => clearInterval(interval);
   }, []);
 
   const STATS = [
     { icon: Blocks, label: "Block Height", value: blockHeight },
-    { icon: Bot, label: "Active Agents", value: "0" },
+    { icon: Bot, label: "Active Agents", value: activeAgents },
     { icon: Zap, label: "TPS", value: "-" },
   ];
 
