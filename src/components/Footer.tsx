@@ -33,8 +33,8 @@ const COLUMNS: FooterColumn[] = [
     title: "Resources",
     links: [
       { label: "White Paper", href: "/whitepaper.pdf", external: true },
-      { label: "GitHub", href: "https://github.com/plumise", external: true },
-      { label: "Explorer", href: "https://scan.plumise.com", external: true },
+      { label: "GitHub", href: "https://github.com/mikusnuz/plumise", external: true },
+      { label: "Explorer", href: "https://explorer.plumise.com", external: true },
       { label: "Dashboard", href: "https://dashboard.plumise.com", external: true },
     ],
   },
@@ -51,7 +51,7 @@ const COLUMNS: FooterColumn[] = [
 
 const SOCIALS = [
   { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "https://github.com/plumise", label: "GitHub" },
+  { icon: Github, href: "https://github.com/mikusnuz/plumise", label: "GitHub" },
   { icon: MessageCircle, href: "#", label: "Discord" },
   { icon: Send, href: "#", label: "Telegram" },
   { icon: BookOpen, href: "/whitepaper.pdf", label: "White Paper" },

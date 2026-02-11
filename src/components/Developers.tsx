@@ -35,7 +35,7 @@ const resources: ResourceLink[] = [
     icon: Github,
     title: "GitHub",
     description: "Explore the source code and contribute",
-    url: "https://github.com/plumise",
+    url: "https://github.com/mikusnuz/plumise",
     tag: "Open Source",
   },
   {
@@ -49,7 +49,7 @@ const resources: ResourceLink[] = [
     icon: Search,
     title: "Block Explorer",
     description: "Browse blocks, transactions, and agents",
-    url: "https://scan.plumise.com",
+    url: "https://explorer.plumise.com",
     tag: "Plumscan",
   },
   {
@@ -134,8 +134,8 @@ const CodeBlock = () => {
               className="flex"
             >
               <span
-                className="mr-6 inline-block w-5 select-none text-right text-xs"
-                style={{ color: "var(--color-text-muted)", opacity: 0.4 }}
+                className="mr-6 inline-block w-5 shrink-0 select-none text-right text-sm"
+                style={{ color: "var(--color-text-muted)", opacity: 0.4, lineHeight: "inherit" }}
               >
                 {i + 1}
               </span>
