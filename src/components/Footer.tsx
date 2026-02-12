@@ -83,7 +83,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <a href="/" className="mb-5 inline-flex items-center no-underline">
               <img
-                src="/logo_white.png"
+                src="/logo_plumise_white.png"
                 alt="Plumise"
                 className="h-8 w-8 object-contain"
               />
