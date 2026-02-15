@@ -21,7 +21,7 @@ const Hero = () => {
       } catch {
         // Fallback to RPC for block height only
         try {
-          const rpcRes = await fetch("https://node-1.plumise.com/rpc", {
+          const rpcRes = await fetch("https://plug.plumise.com/rpc/plug_live_GHUDN5wzPWQixeymMsxfievrsq5y0Ki1uQmDzx9O42Y", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
