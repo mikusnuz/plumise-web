@@ -45,7 +45,7 @@ const dapps: DApp[] = [
     accentColor: "var(--color-primary)",
   },
   {
-    name: "PlumWallet",
+    name: "Pexus",
     description:
       "Browser extension wallet designed for the Plumise ecosystem with native AI agent support.",
     icon: Wallet,

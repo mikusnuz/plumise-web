@@ -26,7 +26,7 @@ const COLUMNS: FooterColumn[] = [
       { label: "PlumSwap", href: "#" },
       { label: "Plumfun", href: "#" },
       { label: "PlumMarket", href: "#" },
-      { label: "PlumWallet", href: "#" },
+      { label: "Pexus", href: "#" },
     ],
   },
   {
